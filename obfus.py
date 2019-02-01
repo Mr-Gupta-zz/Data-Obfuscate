@@ -24,6 +24,8 @@ f_users = []
 #populating lists
 line_count = 0
 for row in reader:
+
+	#remove this line and change the elif to if, if needed to do more than 60 entries
 	if line_count > 60:
 		break
 	elif line_count == 0:
@@ -64,7 +66,7 @@ for ent in data:
 	This way we can maintain data integrity
 	'''
 	#first_name = ent['Name'].split(' ')[0]
-	if ent['Name'] in name_map:
+	if ent['Name'] not None and ent['Name'] in name_map:
 		ent['Name'] = name_map[ent['Name']]
 	else:
 		name_map[ent['Name']] = f_names[name_count]
@@ -85,14 +87,14 @@ for ent in data:
 	ent['Phone'] = phone_num
 	phone_count += 1
 
-	if ent['Email'] in email_map:
+	if ent['Email'] not None and ent['Email'] in email_map:
 		ent['Email'] = email_map[ent['Email']]
 	else:
 		email_map[ent['Email']] = f_email[email_count]
 		ent['Email'] = f_email[email_count]
 		email_count += 1
 
-	if ent['UserName'] in user_map:
+	if ent['UserName'] not None and ent['Email'] in user_map:
 		ent['UserName'] = user_map[ent['UserName']]
 	else:
 		user_map[ent['UserName']] = f_users[user_count]
